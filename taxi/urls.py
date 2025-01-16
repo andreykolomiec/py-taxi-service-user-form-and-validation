@@ -3,7 +3,7 @@ from django.urls import path
 from .views import (AssignDriverToCarView, CarCreateView, CarDeleteView,
                     CarDetailView, CarListView, CarUpdateView,
                     DriverCreateView, DriverDeleteView, DriverDetailView,
-                    DriverLicenseUpdateView, DriverListView, DriverUpdateView,
+                    DriverLicenseUpdateView, DriverListView,
                     ManufacturerCreateView, ManufacturerDeleteView,
                     ManufacturerListView, ManufacturerUpdateView,
                     RemoveDriverFromCarView, index)
@@ -50,18 +50,13 @@ urlpatterns = [
          ),
     path("drivers/create/", DriverCreateView.as_view(), name="driver-create"),
     path("drivers/<int:pk>/update/",
-         DriverUpdateView.as_view(),
+         DriverLicenseUpdateView.as_view(),
          name="driver-update"
          ),
     path("drivers/<int:pk>/delete/",
          DriverDeleteView.as_view(),
          name="driver-delete"
          ),
-    path(
-        "license/update/<int:pk>/",
-        DriverLicenseUpdateView.as_view(),
-        name="license-update",
-    ),
 ]
 
 app_name = "taxi"
