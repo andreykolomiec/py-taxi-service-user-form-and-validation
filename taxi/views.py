@@ -115,7 +115,8 @@ class DriverLicenseUpdateView(LoginRequiredMixin, generic.UpdateView):
     success_url = reverse_lazy("taxi:driver-list")
 
     def form_valid(self, form):
-        return super().form_valid(form)
+        form.save()
+        return redirect(self.get_success_url())
 
 
 class AssignDriverToCarView(LoginRequiredMixin, generic.UpdateView):
